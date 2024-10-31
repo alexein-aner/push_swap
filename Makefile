@@ -6,7 +6,7 @@
 #    By: kamil <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 15:49:43 by kamil             #+#    #+#              #
-#    Updated: 2024/10/31 10:52:37 by kamil            ###   ########.fr        #
+#    Updated: 2024/10/31 12:01:57 by kamil            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS = utils/ft_atoi.c \
        movements/ra.c \
 	   sort/sorting.c \
 	   sort/sort_utils.c \
+	   sort/push_cheapest.c \
        push_swap.c
 
 OBJS = $(SRCS:.c=.o)
