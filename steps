@@ -1,0 +1,23 @@
+	=== INPUT & ERRORS === CHECK
+		Parse input
+		Check errors
+		
+	===	PREPARATION ===
+	Create stack type, initialize CHECK
+	Create movement functions CHECK
+	
+	=== Algorithm start ===
+	push 2
+
+	iter a until 3 are left and:
+		check cheapest
+		push cheapest
+
+	once 3 are left: 
+	sort a 				=== CHECK UNTIL HERE
+
+	then push everything from b back to a, 
+	making sure its in correct pos
+
+	check if smallest number is on the bottom:
+		if its is, move to top
