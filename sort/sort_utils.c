@@ -6,60 +6,13 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:50:13 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 12:00:44 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 12:14:54 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-int	push_cheapest(t_stack *from, t_stack *to, int n)
-{
-	int	n_depth;
-	int	target;
-	int	target_depth;
 
-	n_depth = get_depth(from, n);
-	target = get_target(to, n, 1);
-	target_depth = get_depth(to, target);
-	while (n_depth != 0 || target_depth != 0)
-	{
-		if (n_depth > 0 && target_depth > 0)
-		{
-			rr(from, to);
-			n_depth--;
-			target_depth--;
-		}
-		else if (n_depth < 0 && target_depth < 0)
-		{
-			rrr(from, to);
-			n_depth++;
-			target_depth++;
-		}
-		else if (n_depth > 0)
-		{
-			ra(from);
-			n_depth--;
-		}
-		else if (n_depth < 0)
-		{
-			rra(from);
-			n_depth++;
-		}
-		else if (target_depth > 0)
-		{
-			rb(to);
-			target_depth--;
-		}
-		else if (target_depth < 0)
-		{
-			rrb(to);
-			target_depth++;
-		}
-	}
-	pb(from, to);
-	return (0);
-}
-*/
+/*
 int	check_cheapest(t_stack *from, t_stack *to)
 {
 	t_node	*curr;
@@ -92,7 +45,7 @@ int	check_cheapest(t_stack *from, t_stack *to)
 	}
 	return (cheapest_val);
 }
-
+*/
 int	get_depth(t_stack *from, int n)
 {
 	int		i;
@@ -299,7 +252,7 @@ void	bring_to_top(t_stack *a, int target)
 		}
 	}
 }
-
+/*
 void	bring_min_to_top(t_stack *stack)
 {
 	t_node	*current;
@@ -337,5 +290,40 @@ void	bring_min_to_top(t_stack *stack)
 			rra(stack);
 			min_depth--;
 		}
+	}
+}
+*/
+void	bring_min_to_top(t_stack *stack)
+{
+	t_node	*current;
+	int		min_val;
+	int		min_depth;
+	int		depth;
+	int		half_size;
+
+	if (!stack || !stack->top)
+		return ;
+	current = stack->top;
+	min_val = current->val;
+	min_depth = 0;
+	depth = 0;
+	while (current)
+	{
+		if (current->val < min_val)
+		{
+			min_val = current->val;
+			min_depth = depth;
+		}
+		current = current->next;
+		depth++;
+	}
+	half_size = stack->size / 2;
+	while (min_depth > 0)
+	{
+		if (min_depth > half_size)
+			ra(stack);
+		else
+			rra(stack);
+		min_depth--;
 	}
 }
