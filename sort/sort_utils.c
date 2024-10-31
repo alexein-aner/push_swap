@@ -6,46 +6,12 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:50:13 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 12:31:48 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 14:53:53 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-int	check_cheapest(t_stack *from, t_stack *to)
-{
-	t_node	*curr;
-	int		curr_steps;
-	int		cheapest_val;
-	int		f_depth;
-	int		target;
-	int		target_depth;
-	int		combined_moves;
-
-	curr = from->top;
-	curr_steps = INT_MAX;
-	cheapest_val = -1;
-	while (curr)
-	{
-		f_depth = get_depth(from, curr->val);
-		target = get_target(to, curr->val, 1);
-		target_depth = get_depth(to, target);
-		if ((f_depth > 0 && target_depth > 0) || (f_depth < 0
-				&& target_depth < 0))
-			combined_moves = max(abs(f_depth), abs(target_depth));
-		else
-			combined_moves = abs(f_depth) + abs(target_depth);
-		if (combined_moves < curr_steps)
-		{
-			curr_steps = combined_moves;
-			cheapest_val = curr->val;
-		}
-		curr = curr->next;
-	}
-	return (cheapest_val);
-}
-*/
 int	get_depth(t_stack *from, int n)
 {
 	int		i;
@@ -66,118 +32,6 @@ int	get_depth(t_stack *from, int n)
 		curr = curr->next;
 	}
 	return (-1);
-}
-
-int	get_target(t_stack *to_search, int n, int u_or_l)
-{
-	if (is_biggest(to_search, n) || is_smallest(to_search, n))
-		return (get_biggest(to_search));
-	else if (u_or_l)
-		return (get_immediate_lower(to_search, n));
-	else if (!u_or_l)
-		return (get_immediate_upper(to_search, n));
-	else
-		return (-1);
-}
-
-int	is_biggest(t_stack *to_search, int n)
-{
-	t_node	*curr;
-
-	if (!to_search->top)
-		return (-1);
-	curr = to_search->top;
-	while (curr)
-	{
-		if (n < curr->val)
-			return (0);
-		curr = curr->next;
-	}
-	return (1);
-}
-
-int	is_smallest(t_stack *to_search, int n)
-{
-	t_node	*curr;
-
-	if (!to_search->top)
-		return (-1);
-	curr = to_search->top;
-	while (curr)
-	{
-		if (n > curr->val)
-			return (0);
-		curr = curr->next;
-	}
-	return (1);
-}
-
-int	get_biggest(t_stack *to_search)
-{
-	t_node	*curr;
-	int		max;
-
-	if (!to_search->top)
-		return (-1);
-	curr = to_search->top;
-	max = curr->val;
-	while (curr)
-	{
-		if (max < curr->val)
-			max = curr->val;
-		curr = curr->next;
-	}
-	return (max);
-}
-
-int	get_immediate_lower(t_stack *to_search, int n)
-{
-	int		dif;
-	int		target;
-	t_node	*curr;
-
-	if (!to_search->top)
-		return (-1);
-	dif = INT_MAX;
-	target = -1;
-	curr = to_search->top;
-	while (curr)
-	{
-		if (n - curr->val < dif && n - curr->val > 0)
-		{
-			dif = n - curr->val;
-			target = curr->val;
-		}
-		curr = curr->next;
-	}
-	return (target);
-}
-
-int	get_immediate_upper(t_stack *stack, int target)
-{
-	t_node	*current;
-	int		closest_val;
-	int		closest_diff;
-	int		diff;
-
-	if (!stack || !stack->top)
-		return (-1);
-	current = stack->top;
-	closest_val = -1;
-	closest_diff = INT_MAX;
-	if (is_biggest(stack, target))
-		return (-2);
-	while (current)
-	{
-		diff = current->val - target;
-		if (diff > 0 && diff < closest_diff)
-		{
-			closest_diff = diff;
-			closest_val = current->val;
-		}
-		current = current->next;
-	}
-	return (closest_val);
 }
 
 void	sort_three(t_stack *a)
