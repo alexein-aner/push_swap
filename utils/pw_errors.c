@@ -12,34 +12,33 @@
 
 #include "push_swap.h"
 
-void print_stacks(t_stack *stack_a, t_stack *stack_b)
+void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-    t_node *current_a = stack_a ? stack_a->top : NULL;
-    t_node *current_b = stack_b ? stack_b->top : NULL;
+	t_node	*current_a;
+	t_node	*current_b;
 
-    printf("Stack A (top to bottom)\tStack B (top to bottom)\n");
-    printf("-------------------------------------------------\n");
-
-    while (current_a || current_b)
-    {
-        if (current_a)
-        {
-            printf("%-20d", current_a->val);
-            current_a = current_a->next;
-        }
-        else
-        {
-            printf("%-20s", " ");
-        }
-
-        if (current_b)
-        {
-            printf("%d", current_b->val);
-            current_b = current_b->next;
-        }
-
-        printf("\n");
-    }
+	current_a = stack_a ? stack_a->top : NULL;
+	current_b = stack_b ? stack_b->top : NULL;
+	printf("Stack A (top to bottom)\tStack B (top to bottom)\n");
+	printf("-------------------------------------------------\n");
+	while (current_a || current_b)
+	{
+		if (current_a)
+		{
+			printf("%-20d", current_a->val);
+			current_a = current_a->next;
+		}
+		else
+		{
+			printf("%-20s", " ");
+		}
+		if (current_b)
+		{
+			printf("%d", current_b->val);
+			current_b = current_b->next;
+		}
+		printf("\n");
+	}
 }
 
 int	has_duplicates(t_stack *stack)

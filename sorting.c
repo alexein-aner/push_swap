@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:05:40 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 10:18:22 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 10:46:10 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	check_cheapest(t_stack *from, t_stack *to)
 	int		f_depth;
 	int		target;
 	int		target_depth;
-		int combined_moves;
+	int		combined_moves;
 
 	curr = from->top;
 	curr_steps = INT_MAX;
@@ -161,7 +161,7 @@ int	get_target(t_stack *to_search, int n, int u_or_l)
 	else if (!u_or_l)
 		return (get_immediate_upper(to_search, n));
 	else
-		return -1;
+		return (-1);
 }
 
 int	is_biggest(t_stack *to_search, int n)
@@ -221,7 +221,7 @@ int	get_immediate_lower(t_stack *to_search, int n)
 	t_node	*curr;
 
 	if (!to_search->top)
-		return -1;
+		return (-1);
 	dif = INT_MAX;
 	target = -1;
 	curr = to_search->top;
@@ -234,97 +234,95 @@ int	get_immediate_lower(t_stack *to_search, int n)
 		}
 		curr = curr->next;
 	}
-	return target;
+	return (target);
 }
 
-int get_immediate_upper(t_stack *stack, int target)
+int	get_immediate_upper(t_stack *stack, int target)
 {
-    if (!stack || !stack->top)
-        return -1;
+	t_node	*current;
+	int		closest_val;
+	int		closest_diff;
+	int		diff;
 
-    t_node *current = stack->top;
-    int closest_val = -1;
-    int closest_diff = INT_MAX;
-
+	if (!stack || !stack->top)
+		return (-1);
+	current = stack->top;
+	closest_val = -1;
+	closest_diff = INT_MAX;
 	if (is_biggest(stack, target))
-		return -2;
-
-    while (current)
-    {
-        int diff = current->val - target;
-
-        if (diff > 0 && diff < closest_diff)
-        {
-            closest_diff = diff;
-            closest_val = current->val;
-        }
-
-        current = current->next;
-    }
-
-    return closest_val;
+		return (-2);
+	while (current)
+	{
+		diff = current->val - target;
+		if (diff > 0 && diff < closest_diff)
+		{
+			closest_diff = diff;
+			closest_val = current->val;
+		}
+		current = current->next;
+	}
+	return (closest_val);
 }
 
-void sort_three(t_stack *a)
+void	sort_three(t_stack *a)
 {
-    int first;
-    int second;
-    int third;
+	int	first;
+	int	second;
+	int	third;
 
-    first = a->top->val;
-    second = a->top->next->val;
-    third = a->top->next->next->val;
-
-    // Check if already sorted in ascending order
-    if (first < second && second < third)
-        return;
-
-    // Sort conditions for ascending order
-    if (first > second && second < third && first < third)
-        sa(a);  // Case: 2, 1, 3 → 1, 2, 3
-    else if (first > second && first > third && second > third)
-    {
-        sa(a);  // Case: 3, 2, 1 → 2, 3, 1
-        rra(a); // → 1, 2, 3
-    }
-    else if (first > second && first > third && second < third)
-        ra(a);  // Case: 3, 1, 2 → 1, 2, 3
-    else if (first < second && first > third)
-        rra(a); // Case: 2, 3, 1 → 1, 2, 3
-    else if (first < second && second > third)
-    {
-        sa(a);  // Case: 1, 3, 2 → 3, 1, 2
-        ra(a);  // → 1, 2, 3
-    }
+	first = a->top->val;
+	second = a->top->next->val;
+	third = a->top->next->next->val;
+	if (first < second && second < third)
+		return ;
+	if (first > second && second < third && first < third)
+		sa(a);
+	else if (first > second && first > third && second > third)
+	{
+		sa(a);
+		rra(a);
+	}
+	else if (first > second && first > third && second < third)
+		ra(a);
+	else if (first < second && first > third)
+		rra(a);
+	else if (first < second && second > third)
+	{
+		sa(a);
+		ra(a);
+	}
 }
 
-void push_back(t_stack *b, t_stack *a)
+void	push_back(t_stack *b, t_stack *a)
 {
-    t_node *curr = b->top;
-    int target;
+	t_node	*curr;
+	int		target;
 
-    while (curr)
-    {
+	curr = b->top;
+	while (curr)
+	{
 		if (b->top == NULL)
-			break;
+			break ;
 		curr = b->top;
-        target = get_immediate_upper(a, curr->val);
+		target = get_immediate_upper(a, curr->val);
 		if (target == -2)
 		{
 			pa(a, b);
-        	curr = curr->next;
-			continue;
+			curr = curr->next;
+			continue ;
 		}
-        bring_to_top(a, target);
-        pa(a, b);
-        curr = curr->next;
-    }
+		bring_to_top(a, target);
+		pa(a, b);
+		curr = curr->next;
+	}
 }
 
-void bring_to_top(t_stack *a, int target)
+void	bring_to_top(t_stack *a, int target)
 {
-	int depth = get_depth(a, target);
-	while(depth != 0)
+	int	depth;
+
+	depth = get_depth(a, target);
+	while (depth != 0)
 	{
 		if (depth < 0)
 		{
@@ -339,40 +337,42 @@ void bring_to_top(t_stack *a, int target)
 	}
 }
 
-void bring_min_to_top(t_stack *stack)
+void	bring_min_to_top(t_stack *stack)
 {
-    if (!stack || !stack->top)
-        return;
+	t_node	*current;
+	int		min_val;
+	int		min_depth;
+	int		depth;
+	int		half_size;
 
-    t_node *current = stack->top;
-    int min_val = current->val;
-    int min_depth = 0;
-    int depth = 0;
-
-    while (current)
-    {
-        if (current->val < min_val)
-        {
-            min_val = current->val;
-            min_depth = depth;
-        }
-        current = current->next;
-        depth++;
-    }
-
-    int half_size = stack->size / 2;
-
-    while (min_depth != 0)
-    {
-        if (depth >= half_size)
-        {
-            ra(stack);
-            min_depth--;
-        }
-        else
-        {
-            rra(stack);
-            min_depth--;
-        }
-    }
+	if (!stack || !stack->top)
+		return ;
+	current = stack->top;
+	min_val = current->val;
+	min_depth = 0;
+	depth = 0;
+	while (current)
+	{
+		if (current->val < min_val)
+		{
+			min_val = current->val;
+			min_depth = depth;
+		}
+		current = current->next;
+		depth++;
+	}
+	half_size = stack->size / 2;
+	while (min_depth != 0)
+	{
+		if (depth >= half_size)
+		{
+			ra(stack);
+			min_depth--;
+		}
+		else
+		{
+			rra(stack);
+			min_depth--;
+		}
+	}
 }
