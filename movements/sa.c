@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:50:26 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/29 16:05:02 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 14:59:25 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	sa(t_stack *a)
 	second->next = first;
 	a->top = second;
 	first->prev = second;
-//	printf("sa\n");
+	printf("sa\n");
 }

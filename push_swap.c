@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:25:33 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 10:18:35 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 15:41:05 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	sort(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
+//	print_stacks(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

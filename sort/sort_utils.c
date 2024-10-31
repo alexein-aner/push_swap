@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:50:13 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 14:53:53 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 15:34:09 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,4 +145,28 @@ void	bring_min_to_top(t_stack *stack)
 			min_depth--;
 		}
 	}
+}
+
+int is_sorted(t_stack *stack)
+{
+    t_node *current;
+
+    if (!stack || !stack->top)
+        return (1);
+    current = stack->top;
+    while (current && current->next)
+    {
+        if (current->val > current->next->val)
+            return (0);
+        current = current->next;
+    }
+    return (1);
+}
+
+void    sort_two(t_stack *stack)
+{
+    if (!stack || !stack->top || !stack->top->next)
+        return ;
+    if (stack->top->val > stack->top->next->val)
+        sa(stack);
 }

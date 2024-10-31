@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:33:55 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 10:54:59 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 15:34:35 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void				push_stack(t_stack *stack, int value);
 t_stack				*init_stack(void);
 t_node				*new_node(int value);
 void				free_stack(t_stack *stack);
-//void				print_stack(t_stack *stack);
 int					has_duplicates(t_stack *stack);
 int					is_valid_input(char *str);
 void				pa(t_stack *a, t_stack *b);
@@ -78,7 +77,8 @@ void				bring_to_top(t_stack *a, int target);
 void				push_back(t_stack *from, t_stack *to);
 int					get_immediate_upper(t_stack *to_search, int n);
 void				bring_min_to_top(t_stack *stack);
-
+int					is_sorted(t_stack *stack);
 void				sort(t_stack *a, t_stack *b);
+void				sort_two(t_stack *a);
 
 #endif

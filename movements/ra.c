@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:13:31 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/29 16:04:13 by kamil            ###   ########.fr       */
+/*   Updated: 2024/10/31 14:58:35 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	ra(t_stack *a)
 	node->prev = a->bottom;
 	node->next = NULL;
 	a->bottom = node;
-//	printf("ra\n");
+	printf("ra\n");
 }
