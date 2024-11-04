@@ -61,20 +61,20 @@ void	push_back(t_stack *b, t_stack *a)
 	}
 }
 
-int get_smallest(t_stack *to_search)
+int	get_smallest(t_stack *to_search)
 {
-    t_node *curr;
-    int min;
+	t_node	*curr;
+	int		min;
 
-    if (!to_search->top)
-        return (INT_MAX);
-    curr = to_search->top;
-    min = curr->val;
-    while (curr)
-    {
-        if (min > curr->val)
-            min = curr->val;
-        curr = curr->next;
-    }
-    return (min);
+	if (!to_search->top)
+		return (INT_MAX);
+	curr = to_search->top;
+	min = curr->val;
+	while (curr)
+	{
+		if (min > curr->val)
+			min = curr->val;
+		curr = curr->next;
+	}
+	return (min);
 }

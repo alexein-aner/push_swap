@@ -6,12 +6,12 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:40:49 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 13:13:58 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:31:16 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current_a;
@@ -40,6 +40,7 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 		printf("\n");
 	}
 }
+*/
 
 int	has_duplicates(t_stack *stack)
 {

@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:25:33 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 13:28:08 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:32:39 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	if (argc == 1)
+		return (1);
 	stack_a = init_stack();
 	if (!stack_a)
 		error();
@@ -30,13 +32,6 @@ int	main(int argc, char **argv)
 		error();
 	if (!is_sorted(stack_a))
 		sort(stack_a, stack_b);
-		/*
-	if (is_sorted(stack_a))
-		printf("sorted\n");
-	else
-		printf("failed to sort\n");
-	print_stacks(stack_a, stack_b);
-	*/
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
