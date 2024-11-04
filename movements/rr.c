@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:15:29 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 15:22:51 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:27:23 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rr(t_stack *a, t_stack *b)
 {
-	// ----------- A ------------
 	t_node	*node;
+	t_node	*node2;
 
 	if (!a->top || a->top == a->bottom)
 		return ;
@@ -26,9 +26,6 @@ void	rr(t_stack *a, t_stack *b)
 	node->prev = a->bottom;
 	node->next = NULL;
 	a->bottom = node;
-	// ----------- B ------------
-	t_node	*node2;
-
 	if (!b->top || b->top == b->bottom)
 		return ;
 	node2 = b->top;
@@ -38,6 +35,5 @@ void	rr(t_stack *a, t_stack *b)
 	node2->prev = b->bottom;
 	node2->next = NULL;
 	b->bottom = node2;
-
-	printf("rr\n");
+	write(1, "rr\n", 3);
 }

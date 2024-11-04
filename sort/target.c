@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:52:09 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 14:53:05 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:26:50 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,57 +21,7 @@ int	get_target(t_stack *to_search, int n, int u_or_l)
 	else if (!u_or_l)
 		return (get_immediate_upper(to_search, n));
 	else
-		return (-1);
-}
-
-int	is_biggest(t_stack *to_search, int n)
-{
-	t_node	*curr;
-
-	if (!to_search->top)
-		return (-1);
-	curr = to_search->top;
-	while (curr)
-	{
-		if (n < curr->val)
-			return (0);
-		curr = curr->next;
-	}
-	return (1);
-}
-
-int	is_smallest(t_stack *to_search, int n)
-{
-	t_node	*curr;
-
-	if (!to_search->top)
-		return (-1);
-	curr = to_search->top;
-	while (curr)
-	{
-		if (n > curr->val)
-			return (0);
-		curr = curr->next;
-	}
-	return (1);
-}
-
-int	get_biggest(t_stack *to_search)
-{
-	t_node	*curr;
-	int		max;
-
-	if (!to_search->top)
-		return (-1);
-	curr = to_search->top;
-	max = curr->val;
-	while (curr)
-	{
-		if (max < curr->val)
-			max = curr->val;
-		curr = curr->next;
-	}
-	return (max);
+		return (INT_MIN);
 }
 
 int	get_immediate_lower(t_stack *to_search, int n)
@@ -81,9 +31,9 @@ int	get_immediate_lower(t_stack *to_search, int n)
 	t_node	*curr;
 
 	if (!to_search->top)
-		return (-1);
+		return (INT_MIN);
 	dif = INT_MAX;
-	target = -1;
+	target = INT_MIN;
 	curr = to_search->top;
 	while (curr)
 	{
@@ -105,12 +55,12 @@ int	get_immediate_upper(t_stack *stack, int target)
 	int		diff;
 
 	if (!stack || !stack->top)
-		return (-1);
+		return (INT_MIN);
 	current = stack->top;
-	closest_val = -1;
+	closest_val = INT_MIN;
 	closest_diff = INT_MAX;
 	if (is_biggest(stack, target))
-		return (-2);
+		return (INT_MAX);
 	while (current)
 	{
 		diff = current->val - target;

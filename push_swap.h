@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:33:55 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 15:34:35 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:39:49 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 # include <limits.h>
 # include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-
-# define max(a, b) ((a) > (b) ? (a) : (b))
 
 typedef struct s_node
 {
@@ -80,5 +79,9 @@ void				bring_min_to_top(t_stack *stack);
 int					is_sorted(t_stack *stack);
 void				sort(t_stack *a, t_stack *b);
 void				sort_two(t_stack *a);
+int					max(int a, int b);
+void				error();
+
+int					get_smallest(t_stack *to_search);
 
 #endif

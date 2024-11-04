@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa.c                                               :+:      :+:    :+:   */
+/*   pw_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:11:18 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 13:26:13 by kamil            ###   ########.fr       */
+/*   Created: 2024/11/04 12:16:16 by kamil             #+#    #+#             */
+/*   Updated: 2024/11/04 12:16:38 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack *a, t_stack *b)
+int	max(int a, int b)
 {
-	t_node	*node;
+	if (a > b)
+	{
+		return (a);
+	}
+	return (b);
+}
 
-	if (b->top == NULL)
-		return ;
-	node = b->top;
-	b->top = node->next;
-	if (b->top != NULL)
-		b->top->prev = NULL;
-	else
-		b->bottom = NULL;
-	node->next = a->top;
-	if (a->top != NULL)
-		a->top->prev = node;
-	else
-		a->bottom = node;
-	a->top = node;
-	node->prev = NULL;
-	a->size++;
-	b->size--;
-	write(1, "pa\n", 3);
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

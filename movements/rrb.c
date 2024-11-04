@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:47:02 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 14:58:56 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:27:15 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	rrb(t_stack *b)
 	node->next = b->top;
 	b->top->prev = node;
 	b->top = node;
-	printf("rrb\n");
+	write(1, "rrb\n", 4);
 }

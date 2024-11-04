@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:05:40 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 15:40:27 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:33:05 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ void	sort(t_stack *a, t_stack *b)
 {
 	int	ntm;
 
-	ntm = -1;
-	if (is_sorted(a))
-		return;
+	ntm = INT_MIN;
 	if (a->size == 2)
 	{
 		sort_two(a);
-		return;
+		return ;
 	}
 	if (a->size >= 4)
 		pb(a, b);

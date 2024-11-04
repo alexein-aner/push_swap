@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:50:13 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 15:34:09 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:30:20 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,60 +31,7 @@ int	get_depth(t_stack *from, int n)
 		i++;
 		curr = curr->next;
 	}
-	return (-1);
-}
-
-void	sort_three(t_stack *a)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	first = a->top->val;
-	second = a->top->next->val;
-	third = a->top->next->next->val;
-	if (first < second && second < third)
-		return ;
-	if (first > second && second < third && first < third)
-		sa(a);
-	else if (first > second && first > third && second > third)
-	{
-		sa(a);
-		rra(a);
-	}
-	else if (first > second && first > third && second < third)
-		ra(a);
-	else if (first < second && first > third)
-		rra(a);
-	else if (first < second && second > third)
-	{
-		sa(a);
-		ra(a);
-	}
-}
-
-void	push_back(t_stack *b, t_stack *a)
-{
-	t_node	*curr;
-	int		target;
-
-	curr = b->top;
-	while (curr)
-	{
-		if (b->top == NULL)
-			break ;
-		curr = b->top;
-		target = get_immediate_upper(a, curr->val);
-		if (target == -2)
-		{
-			pa(a, b);
-			curr = curr->next;
-			continue ;
-		}
-		bring_to_top(a, target);
-		pa(a, b);
-		curr = curr->next;
-	}
+	return (INT_MIN);
 }
 
 void	bring_to_top(t_stack *a, int target)
@@ -147,26 +94,26 @@ void	bring_min_to_top(t_stack *stack)
 	}
 }
 
-int is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
-    t_node *current;
+	t_node	*current;
 
-    if (!stack || !stack->top)
-        return (1);
-    current = stack->top;
-    while (current && current->next)
-    {
-        if (current->val > current->next->val)
-            return (0);
-        current = current->next;
-    }
-    return (1);
+	if (!stack || !stack->top)
+		return (1);
+	current = stack->top;
+	while (current && current->next)
+	{
+		if (current->val > current->next->val)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
-void    sort_two(t_stack *stack)
+void	sort_two(t_stack *stack)
 {
-    if (!stack || !stack->top || !stack->top->next)
-        return ;
-    if (stack->top->val > stack->top->next->val)
-        sa(stack);
+	if (!stack || !stack->top || !stack->top->next)
+		return ;
+	if (stack->top->val > stack->top->next->val)
+		sa(stack);
 }

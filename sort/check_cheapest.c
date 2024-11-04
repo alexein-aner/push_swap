@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:08:23 by kamil             #+#    #+#             */
-/*   Updated: 2024/10/31 12:08:44 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:27:45 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_cheapest(t_stack *from, t_stack *to)
 
 	curr = from->top;
 	curr_steps = INT_MAX;
-	cheapest_val = -1;
+	cheapest_val = INT_MIN;
 	while (curr)
 	{
 		f_depth = get_depth(from, curr->val);

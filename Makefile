@@ -6,14 +6,14 @@
 #    By: kamil <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 15:49:43 by kamil             #+#    #+#              #
-#    Updated: 2024/10/31 14:55:27 by kamil            ###   ########.fr        #
+#    Updated: 2024/11/04 12:34:10 by kamil            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I. -g
 RM = rm -f
 
 SRCS = utils/ft_atoi.c \
@@ -27,6 +27,7 @@ SRCS = utils/ft_atoi.c \
        utils/ft_substr.c \
        utils/pw_errors.c \
        utils/pw_utils.c \
+       utils/pw_utils2.c \
        movements/sa.c \
        movements/pb.c \
        movements/pa.c \
@@ -38,9 +39,11 @@ SRCS = utils/ft_atoi.c \
        movements/ra.c \
 	   sort/sorting.c \
 	   sort/sort_utils.c \
+	   sort/sort_utils2.c \
 	   sort/push_cheapest.c \
 	   sort/check_cheapest.c \
 	   sort/target.c \
+	   sort/big_small.c \
        push_swap.c
 
 OBJS = $(SRCS:.c=.o)
