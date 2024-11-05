@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:14 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 12:39:24 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/05 12:19:17 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,22 @@ int	get_biggest(t_stack *to_search)
 		curr = curr->next;
 	}
 	return (max);
+}
+
+int	get_smallest(t_stack *to_search)
+{
+	t_node	*curr;
+	int		min;
+
+	if (!to_search->top)
+		return (INT_MAX);
+	curr = to_search->top;
+	min = curr->val;
+	while (curr)
+	{
+		if (min > curr->val)
+			min = curr->val;
+		curr = curr->next;
+	}
+	return (min);
 }

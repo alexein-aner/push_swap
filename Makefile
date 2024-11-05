@@ -6,7 +6,7 @@
 #    By: kamil <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 15:49:43 by kamil             #+#    #+#              #
-#    Updated: 2024/11/04 14:51:34 by kamil            ###   ########.fr        #
+#    Updated: 2024/11/05 12:26:41 by kamil            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = utils/ft_atoi.c \
        utils/ft_strncmp.c \
        utils/ft_substr.c \
        utils/pw_errors.c \
+       utils/validate_input.c \
        utils/pw_utils.c \
        utils/pw_utils2.c \
        movements/sa.c \

@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:33:55 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 14:31:53 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/05 10:52:26 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ int					max(int a, int b);
 void				error(void);
 
 int					get_smallest(t_stack *to_search);
+int					is_empty_string(const char *str);
+int					is_within_int_range(char *str);
 
 #endif

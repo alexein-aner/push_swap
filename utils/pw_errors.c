@@ -6,11 +6,70 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:40:49 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 14:31:16 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/05 12:02:22 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	has_duplicates(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*inner;
+
+	current = stack->top;
+	while (current != NULL)
+	{
+		inner = current->next;
+		while (inner != NULL)
+		{
+			if (current->val == inner->val)
+				return (1);
+			inner = inner->next;
+		}
+		current = current->next;
+	}
+	return (0);
+}
+
+static int	ft_isspace(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r');
+}
+
+int	is_empty_string(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || str[0] == '\0')
+		return (1);
+	while (str[i])
+	{
+		if (!ft_isspace((unsigned char)str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	is_within_int_range(char *str)
+{
+	if (*str == '-')
+	{
+		if (ft_strlen(str) > 11 || (ft_strlen(str) == 11 && ft_strncmp(str,
+					"-2147483648", ft_strlen(str)) > 0))
+			return (0);
+	}
+	else
+	{
+		if (ft_strlen(str) > 10 || (ft_strlen(str) == 10 && ft_strncmp(str,
+					"2147483647", ft_strlen(str)) > 0))
+			return (0);
+	}
+	return (1);
+}
 /*
 void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
@@ -41,117 +100,3 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 */
-
-int	has_duplicates(t_stack *stack)
-{
-	t_node	*current;
-	t_node	*inner;
-
-	current = stack->top;
-	while (current != NULL)
-	{
-		inner = current->next;
-		while (inner != NULL)
-		{
-			if (current->val == inner->val)
-				return (1);
-			inner = inner->next;
-		}
-		current = current->next;
-	}
-	return (0);
-}
-
-int	is_valid_input(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	while (str[i] != '\0')
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-/*
-int	validate_input(int argc, char **argv)
-{
-	char	**numbers;
-	int		i;
-
-	if (argc == 1)
-		return (0);
-	i = 0;
-	if (argc == 2)
-	{
-		numbers = ft_split(argv[1], ' ');
-		if (!numbers)
-			return (0);
-		while (numbers[i])
-		{
-			if (!is_valid_input(numbers[i]))
-				return (ft_free_split(numbers), 0);
-			i++;
-		}
-	}
-	else
-	{
-		i = 1;
-		while (i < argc)
-		{
-			if (!is_valid_input(argv[i]))
-				return (0);
-			i++;
-		}
-	}
-	return (1);
-}
-*/
-
-static int	validate_single_input(char *input)
-{
-	char	**numbers;
-	int		i;
-
-	i = 0;
-	numbers = ft_split(input, ' ');
-	if (!numbers)
-		return (0);
-	while (numbers[i])
-	{
-		if (!is_valid_input(numbers[i]))
-			return (ft_free_split(numbers), 0);
-		i++;
-	}
-	ft_free_split(numbers);
-	return (1);
-}
-
-static int	validate_multiple_inputs(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_valid_input(argv[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	validate_input(int argc, char **argv)
-{
-	if (argc == 1)
-		return (0);
-	if (argc == 2)
-		return (validate_single_input(argv[1]));
-	return (validate_multiple_inputs(argc, argv));
-}

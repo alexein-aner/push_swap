@@ -6,7 +6,7 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:50:13 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 14:52:20 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/05 12:27:54 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,42 +56,12 @@ void	bring_to_top(t_stack *a, int target)
 
 void	bring_min_to_top(t_stack *stack)
 {
-	t_node	*current;
 	int		min_val;
-	int		min_depth;
-	int		depth;
-	int		half_size;
 
 	if (!stack || !stack->top)
 		return ;
-	current = stack->top;
-	min_val = current->val;
-	min_depth = 0;
-	depth = 0;
-	while (current)
-	{
-		if (current->val < min_val)
-		{
-			min_val = current->val;
-			min_depth = depth;
-		}
-		current = current->next;
-		depth++;
-	}
-	half_size = stack->size / 2;
-	while (min_depth != 0)
-	{
-		if (depth >= half_size)
-		{
-			ra(stack);
-			min_depth--;
-		}
-		else
-		{
-			rra(stack);
-			min_depth--;
-		}
-	}
+	min_val = get_smallest(stack);
+	bring_to_top(stack, min_val);
 }
 
 int	is_sorted(t_stack *stack)

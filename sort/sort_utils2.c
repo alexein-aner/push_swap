@@ -6,11 +6,28 @@
 /*   By: kamil <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:29:42 by kamil             #+#    #+#             */
-/*   Updated: 2024/11/04 13:22:22 by kamil            ###   ########.fr       */
+/*   Updated: 2024/11/05 12:19:32 by kamil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	handle_largest_at_top(t_stack *a)
+{
+	if (a->top->next->val < a->top->next->next->val)
+		ra(a);
+	else
+	{
+		sa(a);
+		rra(a);
+	}
+}
+
+static void	handle_smallest_in_middle(t_stack *a)
+{
+	sa(a);
+	ra(a);
+}
 
 void	sort_three(t_stack *a)
 {
@@ -25,20 +42,12 @@ void	sort_three(t_stack *a)
 		return ;
 	if (first > second && second < third && first < third)
 		sa(a);
-	else if (first > second && first > third && second > third)
-	{
-		sa(a);
-		rra(a);
-	}
-	else if (first > second && first > third && second < third)
-		ra(a);
+	else if (first > second && first > third)
+		handle_largest_at_top(a);
 	else if (first < second && first > third)
 		rra(a);
 	else if (first < second && second > third)
-	{
-		sa(a);
-		ra(a);
-	}
+		handle_smallest_in_middle(a);
 }
 
 void	push_back(t_stack *b, t_stack *a)
@@ -59,22 +68,4 @@ void	push_back(t_stack *b, t_stack *a)
 		pa(a, b);
 		curr = curr->next;
 	}
-}
-
-int	get_smallest(t_stack *to_search)
-{
-	t_node	*curr;
-	int		min;
-
-	if (!to_search->top)
-		return (INT_MAX);
-	curr = to_search->top;
-	min = curr->val;
-	while (curr)
-	{
-		if (min > curr->val)
-			min = curr->val;
-		curr = curr->next;
-	}
-	return (min);
 }
